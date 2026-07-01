@@ -1,0 +1,15 @@
+{
+  "name": "coll-edge-task-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MERN task tracker assignment for COLL-EDGE CONNECT.",
+  "scripts": {
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "dev": "concurrently \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "start": "npm --prefix server start",
+    "build": "npm --prefix client run build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
