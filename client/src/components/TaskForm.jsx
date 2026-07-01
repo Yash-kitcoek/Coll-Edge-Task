@@ -12,8 +12,9 @@ const initialTask = {
 export default function TaskForm({ editingTask, onCancel, onSubmit, submitting }) {
   const task = editingTask || initialTask;
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    const form = event.currentTarget;
     const formData = new FormData(event.currentTarget);
     const payload = {
       title: formData.get("title").trim(),
@@ -23,7 +24,10 @@ export default function TaskForm({ editingTask, onCancel, onSubmit, submitting }
       dueDate: formData.get("dueDate") || null
     };
 
-    onSubmit(payload);
+    const saved = await onSubmit(payload);
+    if (saved && !editingTask) {
+      form.reset();
+    }
   }
 
   return (

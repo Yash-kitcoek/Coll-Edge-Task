@@ -65,8 +65,10 @@ export default function App() {
         setTasks((current) => [created, ...current]);
         notify("Task created");
       }
+      return true;
     } catch (error) {
       notify(error.message);
+      return false;
     } finally {
       setSubmitting(false);
     }
@@ -123,6 +125,7 @@ export default function App() {
       <div className="workspace">
         <aside className="panel">
           <TaskForm
+            key={editingTask?._id || "create-task"}
             editingTask={editingTask}
             onCancel={() => setEditingTask(null)}
             onSubmit={handleSubmit}
