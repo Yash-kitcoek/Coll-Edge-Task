@@ -52,5 +52,13 @@ Backend: `http://localhost:5000`
 
 ## Deployment Notes
 
+- Railway can deploy from the repository root using the included `railway.json`.
+- Set these Railway service variables for the backend:
+  - `MONGODB_URI`: your MongoDB Atlas connection string
+  - `CLIENT_URL`: your deployed frontend URL, or `*` while testing
+  - `PORT`: Railway usually injects this automatically
+- If you override Railway commands manually, use:
+  - Build command: `npm --prefix server ci`
+  - Start command: `npm --prefix server start`
 - Deploy `server/` on Render, Railway, or Cyclic with `MONGODB_URI`, `CLIENT_URL`, and `PORT`.
 - Deploy `client/` on Vercel or Netlify with `VITE_API_URL` pointing to the deployed backend URL plus `/api`.
